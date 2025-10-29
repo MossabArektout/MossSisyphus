@@ -52,11 +52,11 @@ export default function Terminal({ onCommand }: TerminalProps) {
       );
     } else if (cmd === 'skills') {
       newHistory.push(
-        'Languages: Python, Java, JavaScript, TypeScript',
-        'Frontend: React, Tailwind CSS',
-        'Backend: Laravel, Flask',
-        'AI/ML: TensorFlow',
-        'Database: MySQL',
+        'Programming:  Java, Python, C, PHP, SQL',
+        'Databases:  MySQL, PostgreSQL, MongoDB, OracleDB',
+        'Cloud & Devops: Oracle Cloud, Docker, Prometheus, Grafana, OpenTelemetry, CI/CD, Git',
+        'Framework : Java EE, Spring Boot, Laravel, Flask',
+        'AI/ML: TensorFlow, spaCy, openCV',
         ''
       );
     } else if (cmd === 'about' || cmd === 'projects' || cmd === 'experience' || cmd === 'contact' || cmd === 'cv' || cmd === 'stats') {
