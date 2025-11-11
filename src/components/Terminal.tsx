@@ -71,10 +71,10 @@ export default function Terminal({ onCommand }: TerminalProps) {
   };
 
   return (
-    <div className="h-full flex flex-col font-mono text-sm">
+    <div className="h-full flex flex-col font-mono text-xs sm:text-sm">
       <div
         ref={historyRef}
-        className="flex-1 overflow-y-auto text-green-400 space-y-1 mb-4"
+        className="flex-1 overflow-y-auto text-green-400 space-y-0.5 sm:space-y-1 mb-3 sm:mb-4"
       >
         {history.map((line, i) => (
           <div key={i} className={line.startsWith('$') ? 'text-blue-400' : ''}>
@@ -82,14 +82,14 @@ export default function Terminal({ onCommand }: TerminalProps) {
           </div>
         ))}
       </div>
-      <form onSubmit={handleSubmit} className="flex items-center gap-2">
+      <form onSubmit={handleSubmit} className="flex items-center gap-1.5 sm:gap-2">
         <span className="text-blue-400">$</span>
         <input
           ref={inputRef}
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          className="flex-1 bg-transparent outline-none text-green-400"
+          className="flex-1 bg-transparent outline-none text-green-400 text-xs sm:text-sm"
           autoFocus
         />
       </form>

@@ -100,22 +100,22 @@ export default function Projects() {
   ];
 
   return (
-    <div className="text-gray-300 space-y-4 font-mono">
-      <h2 className="text-2xl font-bold text-blue-400 mb-4">Projects</h2>
-      <div className="space-y-4">
+    <div className="text-gray-300 space-y-3 sm:space-y-4 font-mono">
+      <h2 className="text-xl sm:text-2xl font-bold text-blue-400 mb-3 sm:mb-4">Projects</h2>
+      <div className="space-y-3 sm:space-y-4">
         {projects.map((project) => (
           <div
             key={project.name}
-            className="bg-gray-800/50 rounded-lg p-4 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 group"
+            className="bg-gray-800/50 rounded-lg p-3 sm:p-4 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 group"
           >
-            <div className="flex items-start justify-between mb-3">
-              <div className="flex items-center gap-2">
-                <Folder size={20} className="text-blue-400" />
-                <h3 className="text-lg font-semibold text-gray-200 group-hover:text-blue-400 transition-colors">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2 sm:mb-3 gap-2">
+              <div className="flex items-start gap-2 flex-1 min-w-0">
+                <Folder size={18} className="text-blue-400 flex-shrink-0 mt-0.5" />
+                <h3 className="text-base sm:text-lg font-semibold text-gray-200 group-hover:text-blue-400 transition-colors leading-tight">
                   {project.name}
                 </h3>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 sm:flex-shrink-0">
                 {project.github && (
                   <a
                     href={project.github}
@@ -123,7 +123,7 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-blue-400 transition-colors"
                   >
-                    <Github size={18} />
+                    <Github size={16} className="sm:w-[18px] sm:h-[18px]" />
                   </a>
                 )}
                 {project.demo && (
@@ -133,14 +133,14 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-blue-400 transition-colors"
                   >
-                    <ExternalLink size={18} />
+                    <ExternalLink size={16} className="sm:w-[18px] sm:h-[18px]" />
                   </a>
                 )}
               </div>
             </div>
-            <div className="text-gray-400 text-sm mb-3 space-y-1">
+            <div className="text-gray-400 text-xs sm:text-sm mb-2 sm:mb-3 space-y-1">
               {Array.isArray(project.description) ? (
-                <ul className="list-disc list-inside space-y-1">
+                <ul className="list-disc list-inside space-y-0.5 sm:space-y-1">
                   {project.description.map((point, index) => (
                     <li key={index} className="leading-relaxed">
                       {point}
@@ -151,11 +151,11 @@ export default function Projects() {
                 <p>{project.description}</p>
               )}
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {project.techStack.map((tech) => (
                 <span
                   key={tech}
-                  className="px-2 py-1 bg-green-500/10 border border-green-500/30 rounded text-green-400 text-xs"
+                  className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-green-500/10 border border-green-500/30 rounded text-green-400 text-[10px] sm:text-xs"
                 >
                   {tech}
                 </span>

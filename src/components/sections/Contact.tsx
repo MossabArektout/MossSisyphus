@@ -61,21 +61,21 @@ export default function Contact() {
   const email = 'mossab.arektout@example.com';
 
   return (
-    <div className="text-gray-300 space-y-6 font-mono">
-      <h2 className="text-2xl font-bold text-blue-400 mb-4">Contact</h2>
+    <div className="text-gray-300 space-y-4 sm:space-y-6 font-mono">
+      <h2 className="text-xl sm:text-2xl font-bold text-blue-400 mb-3 sm:mb-4">Contact</h2>
 
-      <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700/50 space-y-4">
+      <div className="bg-gray-800/50 rounded-lg p-3 sm:p-4 border border-gray-700/50 space-y-3 sm:space-y-4">
         <div className="space-y-1">
-          <p className="text-gray-400 text-sm">$ ping mossab.arektout</p>
-          <p className="text-green-400 text-sm">PING successful - User is online</p>
-          <p className="text-green-400 text-sm">Response time: &lt;1ms</p>
+          <p className="text-gray-400 text-xs sm:text-sm">$ ping mossab.arektout</p>
+          <p className="text-green-400 text-xs sm:text-sm">PING successful - User is online</p>
+          <p className="text-green-400 text-xs sm:text-sm">Response time: &lt;1ms</p>
         </div>
       </div>
 
       {/* Contact Form */}
-      <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700/50">
-        <h3 className="text-lg text-green-400 mb-4 flex items-center gap-2">
-          <MessageSquare size={20} />
+      <div className="bg-gray-800/50 rounded-lg p-4 sm:p-6 border border-gray-700/50">
+        <h3 className="text-base sm:text-lg text-green-400 mb-3 sm:mb-4 flex items-center gap-2">
+          <MessageSquare size={18} className="sm:w-5 sm:h-5" />
           Send Message
         </h3>
         
@@ -95,11 +95,11 @@ export default function Contact() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label htmlFor="name" className="text-sm text-gray-400 flex items-center gap-2">
-                <User size={16} />
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <div className="space-y-1 sm:space-y-2">
+              <label htmlFor="name" className="text-xs sm:text-sm text-gray-400 flex items-center gap-2">
+                <User size={14} className="sm:w-4 sm:h-4" />
                 Name *
               </label>
               <input
@@ -110,14 +110,14 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 disabled={isSubmitting}
-                className="w-full bg-gray-900/50 border border-gray-700/50 rounded-lg px-3 py-2 text-gray-200 focus:border-blue-500/50 focus:outline-none transition-all duration-200 disabled:opacity-50"
+                className="w-full bg-gray-900/50 border border-gray-700/50 rounded-lg px-2.5 sm:px-3 py-1.5 sm:py-2 text-sm sm:text-base text-gray-200 focus:border-blue-500/50 focus:outline-none transition-all duration-200 disabled:opacity-50"
                 placeholder="Your name"
               />
             </div>
 
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-sm text-gray-400 flex items-center gap-2">
-                <Mail size={16} />
+            <div className="space-y-1 sm:space-y-2">
+              <label htmlFor="email" className="text-xs sm:text-sm text-gray-400 flex items-center gap-2">
+                <Mail size={14} className="sm:w-4 sm:h-4" />
                 Email *
               </label>
               <input
@@ -128,14 +128,14 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 disabled={isSubmitting}
-                className="w-full bg-gray-900/50 border border-gray-700/50 rounded-lg px-3 py-2 text-gray-200 focus:border-blue-500/50 focus:outline-none transition-all duration-200 disabled:opacity-50"
+                className="w-full bg-gray-900/50 border border-gray-700/50 rounded-lg px-2.5 sm:px-3 py-1.5 sm:py-2 text-sm sm:text-base text-gray-200 focus:border-blue-500/50 focus:outline-none transition-all duration-200 disabled:opacity-50"
                 placeholder="your.email@example.com"
               />
             </div>
           </div>
 
-          <div className="space-y-2">
-            <label htmlFor="subject" className="text-sm text-gray-400">
+          <div className="space-y-1 sm:space-y-2">
+            <label htmlFor="subject" className="text-xs sm:text-sm text-gray-400">
               Subject *
             </label>
             <input
@@ -146,13 +146,13 @@ export default function Contact() {
               onChange={handleChange}
               required
               disabled={isSubmitting}
-              className="w-full bg-gray-900/50 border border-gray-700/50 rounded-lg px-3 py-2 text-gray-200 focus:border-blue-500/50 focus:outline-none transition-all duration-200 disabled:opacity-50"
+              className="w-full bg-gray-900/50 border border-gray-700/50 rounded-lg px-2.5 sm:px-3 py-1.5 sm:py-2 text-sm sm:text-base text-gray-200 focus:border-blue-500/50 focus:outline-none transition-all duration-200 disabled:opacity-50"
               placeholder="What's this about?"
             />
           </div>
 
-          <div className="space-y-2">
-            <label htmlFor="message" className="text-sm text-gray-400">
+          <div className="space-y-1 sm:space-y-2">
+            <label htmlFor="message" className="text-xs sm:text-sm text-gray-400">
               Message *
             </label>
             <textarea
@@ -163,7 +163,7 @@ export default function Contact() {
               required
               disabled={isSubmitting}
               rows={5}
-              className="w-full bg-gray-900/50 border border-gray-700/50 rounded-lg px-3 py-2 text-gray-200 focus:border-blue-500/50 focus:outline-none transition-all duration-200 resize-none disabled:opacity-50"
+              className="w-full bg-gray-900/50 border border-gray-700/50 rounded-lg px-2.5 sm:px-3 py-1.5 sm:py-2 text-sm sm:text-base text-gray-200 focus:border-blue-500/50 focus:outline-none transition-all duration-200 resize-none disabled:opacity-50"
               placeholder="Tell me about your project, opportunity, or just say hello..."
             />
           </div>
@@ -171,7 +171,7 @@ export default function Contact() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-blue-500/20 border border-blue-500/50 text-blue-400 rounded-lg py-3 px-4 hover:bg-blue-500/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2"
+            className="w-full bg-blue-500/20 border border-blue-500/50 text-blue-400 rounded-lg py-2 sm:py-3 px-3 sm:px-4 text-sm sm:text-base hover:bg-blue-500/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2"
           >
             {isSubmitting ? (
               <>
@@ -189,20 +189,20 @@ export default function Contact() {
       </div>
 
       {/* Quick Contact Links */}
-      <div className="space-y-3">
-        <h3 className="text-lg text-green-400">Direct Contact</h3>
+      <div className="space-y-2 sm:space-y-3">
+        <h3 className="text-base sm:text-lg text-green-400">Direct Contact</h3>
 
         <a
           href={`mailto:${email}`}
-          className="block w-full bg-gray-800/50 rounded-lg p-4 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 group"
+          className="block w-full bg-gray-800/50 rounded-lg p-3 sm:p-4 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 group"
         >
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-500/10 rounded">
-              <Mail size={20} className="text-blue-400" />
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="p-1.5 sm:p-2 bg-blue-500/10 rounded">
+              <Mail size={16} className="text-blue-400 sm:w-5 sm:h-5" />
             </div>
-            <div className="text-left">
-              <p className="text-sm text-gray-400">Email Directly</p>
-              <p className="text-gray-200 group-hover:text-blue-400 transition-colors">
+            <div className="text-left min-w-0 flex-1">
+              <p className="text-xs sm:text-sm text-gray-400">Email Directly</p>
+              <p className="text-sm sm:text-base text-gray-200 group-hover:text-blue-400 transition-colors truncate">
                 {email}
               </p>
             </div>
@@ -213,15 +213,15 @@ export default function Contact() {
           href="https://github.com/mossabarektout"
           target="_blank"
           rel="noopener noreferrer"
-          className="block w-full bg-gray-800/50 rounded-lg p-4 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 group"
+          className="block w-full bg-gray-800/50 rounded-lg p-3 sm:p-4 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 group"
         >
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-purple-500/10 rounded">
-              <Github size={20} className="text-purple-400" />
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="p-1.5 sm:p-2 bg-purple-500/10 rounded">
+              <Github size={16} className="text-purple-400 sm:w-5 sm:h-5" />
             </div>
             <div className="text-left">
-              <p className="text-sm text-gray-400">GitHub</p>
-              <p className="text-gray-200 group-hover:text-blue-400 transition-colors">
+              <p className="text-xs sm:text-sm text-gray-400">GitHub</p>
+              <p className="text-sm sm:text-base text-gray-200 group-hover:text-blue-400 transition-colors">
                 @mossabarektout
               </p>
             </div>
@@ -232,15 +232,15 @@ export default function Contact() {
           href="https://linkedin.com/in/mossab-arektout"
           target="_blank"
           rel="noopener noreferrer"
-          className="block w-full bg-gray-800/50 rounded-lg p-4 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 group"
+          className="block w-full bg-gray-800/50 rounded-lg p-3 sm:p-4 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-200 group"
         >
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-500/10 rounded">
-              <Linkedin size={20} className="text-blue-400" />
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="p-1.5 sm:p-2 bg-blue-500/10 rounded">
+              <Linkedin size={16} className="text-blue-400 sm:w-5 sm:h-5" />
             </div>
             <div className="text-left">
-              <p className="text-sm text-gray-400">LinkedIn</p>
-              <p className="text-gray-200 group-hover:text-blue-400 transition-colors">
+              <p className="text-xs sm:text-sm text-gray-400">LinkedIn</p>
+              <p className="text-sm sm:text-base text-gray-200 group-hover:text-blue-400 transition-colors">
                 Mossab Arektout
               </p>
             </div>
@@ -248,11 +248,11 @@ export default function Contact() {
         </a>
       </div>
 
-      <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700/50">
-        <p className="text-gray-400 text-sm">
+      <div className="bg-gray-800/50 rounded-lg p-3 sm:p-4 border border-gray-700/50">
+        <p className="text-gray-400 text-xs sm:text-sm">
           <span className="text-green-400">Status:</span> Available for opportunities
         </p>
-        <p className="text-gray-400 text-sm mt-1">
+        <p className="text-gray-400 text-xs sm:text-sm mt-1">
           <span className="text-green-400">Response Time:</span> Usually within 24 hours
         </p>
       </div>

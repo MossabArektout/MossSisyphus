@@ -1,5 +1,5 @@
 import { X, Minus, Maximize2 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface WindowProps {
   id: string;
@@ -21,12 +21,36 @@ export default function Window({
   onFocus,
   initialPosition = { x: 100, y: 100 },
 }: WindowProps) {
-  const [position, setPosition] = useState(initialPosition);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Center windows on mobile, use initialPosition on desktop
+  const defaultPosition = isMobile
+    ? { x: window.innerWidth < 640 ? 10 : 20, y: 80 }
+    : initialPosition;
+
+  const [position, setPosition] = useState(defaultPosition);
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
+  // Update position when switching between mobile/desktop
+  useEffect(() => {
+    if (isMobile) {
+      setPosition({ x: window.innerWidth < 640 ? 10 : 20, y: 80 });
+    }
+  }, [isMobile]);
+
   const handleMouseDown = (e: React.MouseEvent) => {
     if ((e.target as HTMLElement).closest('.window-controls')) return;
+    if (isMobile) return; // Disable dragging on mobile
     setIsDragging(true);
     setDragStart({
       x: e.clientX - position.x,
@@ -61,37 +85,38 @@ export default function Window({
 
   return (
     <div
-      className={`fixed bg-gray-900/95 backdrop-blur-xl rounded-lg shadow-2xl border border-gray-700/50 overflow-hidden transition-all duration-200 ${
+      className={`fixed bg-gray-900/95 backdrop-blur-xl rounded-lg shadow-2xl border border-gray-700/50 overflow-hidden transition-all duration-200 w-[95vw] sm:w-[85vw] md:w-[600px] ${
         isActive ? 'ring-2 ring-blue-500/50' : ''
       }`}
       style={{
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        width: '600px',
-        maxHeight: '70vh',
+        left: isMobile ? (window.innerWidth < 640 ? '2.5vw' : '7.5vw') : (position.x < 10 ? '10px' : `${position.x}px`),
+        top: position.y < 10 ? '10px' : `${position.y}px`,
+        maxHeight: isMobile ? '80vh' : '70vh',
         zIndex: isActive ? 50 : 10,
       }}
       onClick={onFocus}
     >
       <div
-        className="bg-gray-800/90 px-4 py-3 flex items-center justify-between cursor-move border-b border-gray-700/50"
+        className={`bg-gray-800/90 px-2 sm:px-4 py-2 sm:py-3 flex items-center justify-between border-b border-gray-700/50 ${
+          isMobile ? 'cursor-default' : 'cursor-move'
+        }`}
         onMouseDown={handleMouseDown}
       >
-        <div className="flex items-center gap-2">
-          <div className="flex gap-2 window-controls">
+        <div className="flex items-center gap-1 sm:gap-2 flex-1 min-w-0">
+          <div className="flex gap-1 sm:gap-2 window-controls">
             <button
               onClick={onClose}
-              className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 transition-colors"
+              className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500 hover:bg-red-600 transition-colors"
             />
             <button
               onClick={onMinimize}
-              className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 transition-colors"
+              className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 transition-colors"
             />
-            <button className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 transition-colors" />
+            <button className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500 hover:bg-green-600 transition-colors" />
           </div>
-          <span className="text-sm text-gray-300 ml-3 font-mono">{title}</span>
+          <span className="text-xs sm:text-sm text-gray-300 ml-1 sm:ml-3 font-mono truncate">{title}</span>
         </div>
-        <div className="flex gap-2 window-controls">
+        <div className="hidden sm:flex gap-2 window-controls">
           <button
             onClick={onMinimize}
             className="text-gray-400 hover:text-gray-200 transition-colors"
@@ -109,7 +134,10 @@ export default function Window({
           </button>
         </div>
       </div>
-      <div className="p-6 overflow-y-auto" style={{ maxHeight: 'calc(70vh - 52px)' }}>
+      <div
+        className="p-3 sm:p-4 md:p-6 overflow-y-auto text-sm sm:text-base"
+        style={{ maxHeight: isMobile ? 'calc(80vh - 52px)' : 'calc(70vh - 52px)' }}
+      >
         {children}
       </div>
     </div>

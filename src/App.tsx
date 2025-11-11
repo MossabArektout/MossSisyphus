@@ -144,19 +144,21 @@ function App() {
 
       {/* Header */}
       <header className="relative z-10 bg-gray-900/50 backdrop-blur-md border-b border-gray-700/50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-3 h-3 rounded-full bg-red-500" />
-            <div className="w-3 h-3 rounded-full bg-yellow-500" />
-            <div className="w-3 h-3 rounded-full bg-green-500" />
-            <span className="ml-4 text-gray-300 font-mono text-sm">Mossab Arektout</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500" />
+            <span className="ml-2 sm:ml-4 text-gray-300 font-mono text-xs sm:text-sm truncate max-w-[120px] sm:max-w-none">Mossab Arektout</span>
           </div>
           <button
             onClick={() => setIsCommandPaletteOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 rounded-lg border border-gray-700/50 text-gray-400 hover:text-gray-200 hover:border-blue-500/50 transition-all duration-200 font-mono text-sm"
+            className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 bg-gray-800/50 rounded-lg border border-gray-700/50 text-gray-400 hover:text-gray-200 hover:border-blue-500/50 active:bg-gray-700/50 transition-all duration-200 font-mono text-xs sm:text-sm touch-manipulation"
+            aria-label="Open command palette"
           >
-            <span>Command Palette</span>
-            <kbd className="px-2 py-0.5 bg-gray-700 rounded text-xs">⌘K</kbd>
+            <span className="hidden sm:inline">Command Palette</span>
+            <span className="sm:hidden">⌘K</span>
+            <kbd className="hidden sm:inline px-2 py-0.5 bg-gray-700 rounded text-xs" aria-hidden="true">⌘K</kbd>
           </button>
         </div>
       </header>
@@ -193,17 +195,19 @@ function App() {
       />
 
       {/* Centered Hero Section (Name + Image) */}
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-12 pointer-events-none">
+      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col md:flex-row items-center gap-4 sm:gap-6 md:gap-12 pointer-events-none px-4 max-w-full w-full md:w-auto">
         {/* Left Text */}
-        <div className="text-right">
-          <h1 className="text-6xl font-bold text-white-700/20 mb-4">Mossab Arektout</h1>
-          <p className="text-xl text-white-100/20 font-mono">
+        <div className="text-center md:text-right order-2 md:order-1 w-full md:w-auto">
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white-700/20 mb-2 md:mb-4 break-words md:whitespace-nowrap px-2 md:px-0">
+            Mossab Arektout
+          </h1>
+          <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl text-white-100/20 font-mono px-2 md:px-0 break-words">
             Software Engineering Student | AI Enthusiast
           </p>
         </div>
 
         {/* Right Image */}
-        <div className="w-52 h-52 rounded-full overflow-hidden shadow-2xl border-2 border-gray-700/20 animate-fadeIn">
+        <div className="w-28 h-28 xs:w-32 xs:h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-52 lg:h-52 rounded-full overflow-hidden shadow-2xl border-2 border-gray-700/20 animate-fadeIn order-1 md:order-2 flex-shrink-0">
           <img
             src="mossab.png"
             alt="Mossab Arektout"

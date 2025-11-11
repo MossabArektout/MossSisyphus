@@ -50,30 +50,30 @@ export default function CommandPalette({ isOpen, onClose, commands }: CommandPal
 
   return (
     <div
-      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-start justify-center pt-32"
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-start justify-center pt-16 sm:pt-24 md:pt-32 px-3 sm:px-4"
       onClick={onClose}
     >
       <div
         className="bg-gray-900/95 backdrop-blur-xl rounded-lg shadow-2xl border border-gray-700/50 w-full max-w-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-700/50">
-          <Search size={20} className="text-gray-400" />
+        <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 border-b border-gray-700/50">
+          <Search size={16} className="text-gray-400 flex-shrink-0 sm:w-5 sm:h-5" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Type a command or search..."
-            className="flex-1 bg-transparent outline-none text-gray-200 placeholder-gray-500 font-mono"
+            className="flex-1 bg-transparent outline-none text-gray-200 placeholder-gray-500 font-mono text-sm sm:text-base min-w-0"
             autoFocus
           />
-          <kbd className="px-2 py-1 text-xs bg-gray-800 rounded border border-gray-700 text-gray-400 font-mono">
+          <kbd className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs bg-gray-800 rounded border border-gray-700 text-gray-400 font-mono flex-shrink-0">
             ESC
           </kbd>
         </div>
-        <div className="max-h-96 overflow-y-auto">
+        <div className="max-h-[60vh] sm:max-h-96 overflow-y-auto">
           {filteredCommands.length === 0 ? (
-            <div className="px-4 py-8 text-center text-gray-500 font-mono text-sm">
+            <div className="px-3 sm:px-4 py-6 sm:py-8 text-center text-gray-500 font-mono text-xs sm:text-sm">
               No commands found
             </div>
           ) : (
@@ -84,7 +84,7 @@ export default function CommandPalette({ isOpen, onClose, commands }: CommandPal
                   cmd.action();
                   onClose();
                 }}
-                className={`w-full px-4 py-3 text-left font-mono text-sm transition-colors ${
+                className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 text-left font-mono text-xs sm:text-sm transition-colors ${
                   index === selected
                     ? 'bg-blue-600/20 text-blue-400'
                     : 'text-gray-300 hover:bg-gray-800/50'
